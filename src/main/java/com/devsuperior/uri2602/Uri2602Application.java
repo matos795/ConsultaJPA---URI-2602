@@ -29,5 +29,10 @@ public class Uri2602Application implements CommandLineRunner {
 		for (CustomerMinDTO obj : dtoList) {
 			System.out.println(obj);
 		}
+
+		List<CustomerMinDTO> list2 = customerRepository.search2("RS");
+		for (CustomerMinDTO obj : list2) {
+			System.out.println(obj);
+		}
 	}
 }
