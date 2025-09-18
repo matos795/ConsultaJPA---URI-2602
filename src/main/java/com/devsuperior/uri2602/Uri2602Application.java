@@ -10,10 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.devsuperior.uri2602.dto.CustomerMinDTO;
 import com.devsuperior.uri2602.dto.ProductDTO;
+import com.devsuperior.uri2602.dto.ProviderDTO;
 import com.devsuperior.uri2602.projections.CustomerMinProjection;
 import com.devsuperior.uri2602.projections.ProductMinProjection;
+import com.devsuperior.uri2602.projections.ProviderMinProjection;
 import com.devsuperior.uri2602.repositories.CustomerRepository;
 import com.devsuperior.uri2602.repositories.ProductRepository;
+import com.devsuperior.uri2602.repositories.ProviderRepository;
 
 @SpringBootApplication
 public class Uri2602Application implements CommandLineRunner {
@@ -22,6 +25,8 @@ public class Uri2602Application implements CommandLineRunner {
 	private CustomerRepository customerRepository;
 	@Autowired
 	private ProductRepository productRepository;
+	@Autowired
+	private ProviderRepository providerRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Uri2602Application.class, args);
@@ -44,6 +49,12 @@ public class Uri2602Application implements CommandLineRunner {
 			System.out.println(obj);
 		}
 
+		List<ProviderMinProjection> list2607 = providerRepository.search2607();
+		List<ProviderDTO> dtoList2607 = list2607.stream().map(x -> new ProviderDTO(x)).collect(Collectors.toList());
+		for (ProviderDTO obj : dtoList2607) {
+			System.out.println(obj);
+		}
+
 		System.out.println("--------------------- J P Q L ---------------------");
 
 		List<CustomerMinDTO> list2 = customerRepository.search2603X("Porto Alegre");
@@ -53,6 +64,11 @@ public class Uri2602Application implements CommandLineRunner {
 
 		List<ProductDTO> list2604X = productRepository.search2604X(10, 100);
 		for (ProductDTO obj : list2604X) {
+			System.out.println(obj);
+		}
+
+		List<ProviderDTO> list2607X = providerRepository.search2607X();
+		for (ProviderDTO obj : list2607X) {
 			System.out.println(obj);
 		}
 
