@@ -1,5 +1,7 @@
 package com.devsuperior.uri2602.dto;
 
+import com.devsuperior.uri2602.projections.ProductMinProjection;
+
 public class ProductDTO {
 
     private Long id;
