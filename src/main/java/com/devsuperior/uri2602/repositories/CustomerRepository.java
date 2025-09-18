@@ -12,9 +12,17 @@ import com.devsuperior.uri2602.projections.CustomerMinProjection;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     @Query(nativeQuery = true, value = "SELECT name FROM customers WHERE UPPER(state)= UPPER(:state)")
-    List<CustomerMinProjection> search1(String state);
+    List<CustomerMinProjection> search2602(String state);
 
     @Query("SELECT new com.devsuperior.uri2602.dto.CustomerMinDTO(obj.name) "
             + "FROM Customer obj WHERE UPPER(obj.state)= UPPER(:state)")
-    List<CustomerMinDTO> search2(String state);
+    List<CustomerMinDTO> search2602X(String state);
+
+
+    @Query(nativeQuery = true, value = "SELECT name, street FROM customers WHERE UPPER(city)= UPPER(:city)")
+    List<CustomerMinProjection> search2603(String city);
+
+    @Query("SELECT new com.devsuperior.uri2602.dto.CustomerMinDTO(obj.name, obj.street) "
+            + "FROM Customer obj WHERE UPPER(obj.city)= UPPER(:city)")
+    List<CustomerMinDTO> search2603X(String city);
 }

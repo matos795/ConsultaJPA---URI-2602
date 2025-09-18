@@ -24,15 +24,22 @@ public class Uri2602Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<CustomerMinProjection> list = customerRepository.search1("RS");
+
+		System.out.println("--------------------- S Q L ---------------------");
+
+		List<CustomerMinProjection> list = customerRepository.search2603("Porto Alegre");
 		List<CustomerMinDTO> dtoList = list.stream().map(x -> new CustomerMinDTO(x)).collect(Collectors.toList());
 		for (CustomerMinDTO obj : dtoList) {
 			System.out.println(obj);
 		}
 
-		List<CustomerMinDTO> list2 = customerRepository.search2("RS");
+		System.out.println("--------------------- J P Q L ---------------------");
+
+		List<CustomerMinDTO> list2 = customerRepository.search2603X("Porto Alegre");
 		for (CustomerMinDTO obj : list2) {
 			System.out.println(obj);
 		}
+
+		System.out.println("------------------------------------------");
 	}
 }
